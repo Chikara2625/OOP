@@ -2,7 +2,6 @@ class gudang:
     def __init__(self):
         self.daftarBarang = []
         self.daftarKaryawan = []
-        self.daftarCustomer = []
         self.daftarkurir = []
         self.history = []
 
@@ -11,18 +10,26 @@ class gudang:
         Nama = input("Nama Barang\t: ").lower()
         Jenis = input("Jenis Barang\t: ").lower()
         Quantity = int(input("Jumlah Barang\t: "))
+        
         for item in self.daftarBarang:
             if item.nama == Nama:
                 item.quantity += Quantity
                 return
+            
         newItem = barang(Kode, Nama, Jenis, Quantity)
         self.daftarBarang.append(newItem)
         
     def tambahKaryawan(self):
         Nik = input("NIK Karyawan\t:")
-        Nama = input("Nama Karyawan\t:")
-        Gender = input("Gender\t:")
+        Nama = input("Nama Karyawan\t:").lower()
+        Gender = input("Gender\t:").lower()
         noHp = input("No.HP\t:")
+        
+        for person in self.daftarKaryawan:
+            if person.nama == Nama:
+                print(f"Registrasi Gagal, {Nama} Merupakan Karyawan")
+                return
+            
         newKaryawan = karyawan(Nik, Nama, Gender, noHp)
         self.daftarKaryawan.append(newKaryawan)
 
@@ -69,9 +76,9 @@ class karyawan:
         namaBarang.kurang(quantity)
 
     def detail(self):
-        print(f"NIK\t\t: {self.nik}")
-        print(f"Nama\t\t: {self.nama}")
-        print(f"Gender\t\t: {self.gender}")
+        print(f"NIK\t: {self.nik}")
+        print(f"Nama\t: {self.nama}")
+        print(f"Gender\t: {self.gender}")
         print(f"noHP\t: {self.noHp}")
 
 class barang:
