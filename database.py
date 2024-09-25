@@ -4,12 +4,17 @@ class gudang:
         self.daftarKaryawan = []
         self.daftarCustomer = []
         self.daftarkurir = []
+        self.history = []
 
-    def tambahBarangBaru(self):
+    def tambahBarang(self):
         Kode = input("Kode Barang\t: ")
         Nama = input("Nama Barang\t: ").lower()
         Jenis = input("Jenis Barang\t: ").lower()
         Quantity = int(input("Jumlah Barang\t: "))
+        for item in self.daftarBarang:
+            if item.nama == Nama:
+                item.quantity += Quantity
+                return
         newItem = barang(Kode, Nama, Jenis, Quantity)
         self.daftarBarang.append(newItem)
         
@@ -21,19 +26,32 @@ class gudang:
         newKaryawan = karyawan(Nik, Nama, Gender, noHp)
         self.daftarKaryawan.append(newKaryawan)
 
+    def tambarKurir(self):
+        newKurir = kurir()
+        self.daftarkurir.append(newKurir)
+        
     def listBarang(self):
         if(not self.daftarBarang):
             print("Gudang Kosong")
             return
         
         for i in range(len(self.daftarBarang)):
+            print(f"{i + 1}. ", end="")
             self.daftarBarang[i].detail()
     
     def listKaryawan(self):
+        if(not self.daftarKaryawan):
+            print("Karyawan Tidak Ada")
+            return
+        
         for i in range(len(self.daftarKaryawan)):
             self.daftarKaryawan[i].detail()
     
     def listKurir(self):
+        if(not self.daftarkurir):
+            print("Kurir Tidak Ada")
+            return
+        
         for i in range(len(self.daftarkurir)):
             self.daftarkurir[i].detail()
 
