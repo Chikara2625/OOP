@@ -12,6 +12,7 @@ def showMenu():
         print("4. Tambah Barang")
         print("5. Barang Masuk")
         print("6. Barang Keluar")
+        print("7. Riwayat")
         print("0. Keluar")
         n = int(input("Pilihan : "))
         if(n == 1):
@@ -26,7 +27,13 @@ def showMenu():
             Gudang.tambahBarang()
         elif(n == 6):
             Gudang.kurangBarang()
-        input()
+        elif(n == 7):
+            Gudang.riwayat()
+        elif(n == 0):
+            break
+        else:
+            print("Menu Tidak Ditemukan")
+        input("Spasi Untuk Melanjutkan ")
 
 Gudang = gudang()
 showMenu()

@@ -30,10 +30,12 @@ class gudang:
             self.daftarBarang[i].detail()
     
     def listKaryawan(self):
-        for i in range(len(self.daftarBarang)):
+        for i in range(len(self.daftarKaryawan)):
             self.daftarKaryawan[i].detail()
     
-
+    def listKurir(self):
+        for i in range(len(self.daftarkurir)):
+            self.daftarkurir[i].detail()
 
 class karyawan:
     def __init__(self, nik, nama, gender, noHp):
