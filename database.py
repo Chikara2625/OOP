@@ -3,7 +3,7 @@ class gudang:
         self.daftarBarang = []
         self.daftarKaryawan = []
         self.daftarCustomer = []
-        self.daftarkurir = []
+        self.daftarKurir = []
 
     def tambahBarangBaru(self):
         Kode = input("Kode Barang\t: ")
@@ -16,10 +16,21 @@ class gudang:
     def tambahKaryawan(self):
         Nik = input("NIK Karyawan\t:")
         Nama = input("Nama Karyawan\t:")
-        Gender = input("Gender\t:")
+        Gender = input("Gender\t:").upper()
         noHp = input("No.HP\t:")
         newKaryawan = karyawan(Nik, Nama, Gender, noHp)
         self.daftarKaryawan.append(newKaryawan)
+
+    def menambahkanKurir(self):
+        id = input("Id Kurir: ")
+        nama = input ("Nama: ")
+        gender = input("Gender: ").upper()
+        hp= input("No. hp: ")
+        kurirBaru = kurir(id, nama, gender, hp)
+        self.daftarKurir.append(kurirBaru)
+
+
+
 
     def listBarang(self):
         if(not self.daftarBarang):
@@ -76,3 +87,17 @@ class barang:
     def kurang(self, quantity):
         self.quantity -= quantity
         print(f"Jumlah barang {self.nama} bertambah dari {self.quantity + quantity} menjadi {self.quantity}")
+
+class kurir:
+    def __init__(self, id, nama, gender, hp):
+        self.idKurir = id
+        self.namaKurir = nama
+        self.genderKurir = gender
+        self.hpKurir = hp
+        # listKurir = []
+    def detail(self):
+        print(f"Kode\t\t: {self.idKurir}")
+        print(f"Nama\t\t: {self.namaKurir.title()}")
+        print(f"Gender\t\t: {self.genderKurir}")
+        print(f"No. hp\t: {self.hpKurir}")
+    # def menambahkanKurir(self, id, nama, gender, hp):
